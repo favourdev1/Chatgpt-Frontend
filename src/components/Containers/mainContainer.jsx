@@ -28,7 +28,7 @@ const MainContainer = () => {
   };
 
   const sendRequest = async (message) => {
-    const url = "http://127.0.0.1:3001/";
+    const url = "https://chatgpt-backend-2qe8.onrender.com/";
  
     let userMessage = {
       role: "user",
@@ -71,7 +71,8 @@ console.log(allMessages)
               <div className="text-left  w-full mt-3 mb-5" key={index}>
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    {message.user === "user" ? (
+             
+                    {message.role == "user" ? (
                       <img src={userProfile} alt="userprofile"  className="h-3/5 w-3/5 p-0 m-0 rounded-full border border-chatgpt-border-gray border-2"/>
                     ) : (
                       <ChatGptIcon />
