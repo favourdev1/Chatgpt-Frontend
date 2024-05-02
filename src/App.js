@@ -5,24 +5,50 @@ import "./App.css";
 import Sidebar from "./components/sidebar";
 import Topbar from "./components/topbar";
 import MainContainer from "./components/Containers/mainContainer";
-import { useState } from "react";
+// import { useState } from "react";
+import { useState, useEffect } from "react";
 function App() {
 	const [clearMessages, setClearMessages] = useState(false);
-	const [hideSideBar, setHideSidebar] = useState(false);
+
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+	const [hideSideBar, setHideSidebar] = useState(window.innerWidth <= 768);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setHideSidebar(window.innerWidth <= 768);
+			setIsMobile(window.innerWidth <= 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		// Cleanup function
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
+	function toggleSidebar() {
+		setHideSidebar(!hideSideBar);
+	}
+	// const [hideSideBar, setHideSidebar] = useState(false);
 
 	// const handleShowSidebar = () => {
 	//   setHideSidebar(!hideSideBar);
 	// };
 	return (
 		<div className=" h-screen flex bg-chatgpt-light-gray overflow-hidden ">
-			<Sidebar className="" hideSideBar={hideSideBar} />
+			<Sidebar className="" ismmobile={isMobile} toggleSidebar={toggleSidebar} hideSideBar={hideSideBar} />
 
-			<div className="h-screen flex-1 -32   " >
+			<div className="h-screen flex-1 -32   ">
 				{/* content */}
 				<div className=" h-full   flex flex-col text-white">
 					{/* Topbar */}
 					<div class="flex items-center justify-between py-1 border-chatgpt-border-gray my-2 px-2 ">
-						<div className="flex items-center hover:bg-chatgpt-border-gray  hover:rounded-xl cursor-pointer py-2 pl-4 pr-7" onClick={()=>setHideSidebar(!hideSideBar)}>
+						<div
+							className="flex items-center hover:bg-chatgpt-border-gray  hover:rounded-xl cursor-pointer py-2 pl-4 pr-7"
+							onClick={() => setHideSidebar(!hideSideBar)}
+						>
 							<button class="text-white">
 								<svg
 									width="24"
@@ -40,7 +66,9 @@ function App() {
 									></path>
 								</svg>
 							</button>
-							<h2 className="text-white text-lg font-semibold ml-2">ChatGPT 3.5</h2>
+							<h2 className="text-white text-lg font-semibold ml-2">
+								ChatGPT 3.5
+							</h2>
 						</div>
 					</div>
 					{/* end of topbar */}

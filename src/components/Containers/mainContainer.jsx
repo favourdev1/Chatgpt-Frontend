@@ -11,6 +11,11 @@ const MainContainer = () => {
 
   const messagesEndRef = useRef(null);
 
+
+
+
+
+  
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
