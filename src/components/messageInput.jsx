@@ -32,7 +32,7 @@ const MessageInput = ({ onSendData }) => {
             onKeyPress={handleKeyPress}
             onChange={(event)=>setText(event.target.value)}
             placeholder="Message ChatGPT…"
-            className="m-0 w-full text-base  border-0 rounded-2xl resize-none bg-transparent focus:ring-0 focus-visible:ring-0 outline-0 dark:bg-transparent py-[10px] pr-10 md:py-3 md:pr-12 max-h-[25dvh] max-h-52 placeholder-black/50 dark:placeholder-white/50 pl-3 md:pl-4"
+            className="m-0 w-full text-base  border-0 rounded-2xl resize-none bg-transparent focus:ring-0 focus-visible:ring-0 outline-0 dark:bg-transparent py-[10px] pr-10 md:py-3 md:pr-12 max-h-[25dvh] max-h-52 placeholder-white/50 dark:placeholder-white/50 pl-3 md:pl-4"
             style={{ overflowY: "hidden" }}
           ></textarea>
           <button

@@ -14,7 +14,7 @@ function App() {
 	//   setHideSidebar(!hideSideBar);
 	// };
 	return (
-		<div className="transition-al h-screen flex bg-chatgpt-light-gray overflow-hidden ">
+		<div className=" h-screen flex bg-chatgpt-light-gray overflow-hidden ">
 			<Sidebar className="" hideSideBar={hideSideBar} />
 
 			<div className="h-screen flex-1 -32   " >
