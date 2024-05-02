@@ -67,7 +67,7 @@ console.log(allMessages)
 
   return (
     <div className="flex flex-col items-center   px-4 py-4  bg-transparent flex-1">
-      <div className="w-full xl:w-1/2   h-[79vh]  text-sm  overflow-y-scroll no-scrollbar  ">
+      <div className="w-full xl:w-1/2   h-[85vh]  text-sm  overflow-y-scroll no-scrollbar  ">
         {allMessages.length < 1 ? (
           <Splashchat />
         ) : (
