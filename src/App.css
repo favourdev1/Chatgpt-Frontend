@@ -13,6 +13,12 @@
   }
 }
 
+html, body {
+  overflow: hidden;
+  height: 100vh;
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +41,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.typing-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
 }
