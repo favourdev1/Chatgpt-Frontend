@@ -44,7 +44,7 @@ function App() {
 				{/* content */}
 				<div className=" h-full   flex flex-col text-white">
 					{/* Topbar */}
-					<div class=" fixed flex items-center justify-between py-1 border-chatgpt-border-gray my-2 px-2 ">
+					<div class=" fixed bg-chatgpt-light-gray w-full flex items-center justify-between py-1 border-chatgpt-border-gray my-2 px-2 ">
 						<div
 							className="flex items-center hover:bg-chatgpt-border-gray  hover:rounded-xl cursor-pointer py-2 pl-4 pr-7"
 							onClick={() => setHideSidebar(!hideSideBar)}

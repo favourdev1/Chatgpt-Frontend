@@ -6,9 +6,9 @@ import ChatGptIcon from "../svg/chatgptIcon";
 import axios from "axios";
 import userProfile from "../../assets/userimage.jpg";
 const MainContainer = () => {
-  const [sentMessage, setsentMessage] = useState("");
+  
   let [allMessages, setAllMessages] = useState([]); // State to store message
-
+  let [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
 
@@ -20,14 +20,15 @@ const MainContainer = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const conversationData = [];
   useEffect(scrollToBottom, [allMessages]);
 
   const handleDataFromChild = (data) => {
     // Callback function to receive data
     // setsentMessage(data);
 
-    
+    if (data.trim().length < 1) {
+      return
+    }
     // console.log(allMessages);
     sendRequest(data);
   };
@@ -41,14 +42,16 @@ const MainContainer = () => {
     };
     let newAllMessages = [...allMessages, userMessage];
     setAllMessages((prevMessages) => [...prevMessages, userMessage]);
-console.log(allMessages)
+    console.log(allMessages)
       // Add the new message to the allMessages array
       // setAllMessages((prevMessages) => [...prevMessages, newMessage]);
 
     
     try {
       // console.log(typeof(allMessages));
-      const response = await axios.post(url, {messages:newAllMessages});
+      setIsLoading(true);
+      const response = await axios.post(url, { messages: newAllMessages });
+      setIsLoading(false);
       // console.log(response.data.data);
       // return;
       let aiMessage = {
@@ -71,7 +74,7 @@ console.log(allMessages)
         {allMessages.length < 1 ? (
           <Splashchat />
         ) : (
-          <div id="messagecontainer">
+          <div id="messagecontainer" className="pt-14">
             {allMessages.map((message, index) => (
               <div className="text-left  w-full mt-3 mb-5" key={index}>
                 <div className="flex items-start">
@@ -99,7 +102,7 @@ console.log(allMessages)
         )}
         {/* <p>Message from Child: {sentMessage}</p> */}
       </div>
-      <MessageInput onSendData={handleDataFromChild} />
+      <MessageInput onSendData={handleDataFromChild} isLoading={isLoading} />
     </div>
   );
 };
