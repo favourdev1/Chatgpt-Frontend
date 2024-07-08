@@ -9,6 +9,7 @@ const MainContainer = () => {
   
   let [allMessages, setAllMessages] = useState([]); // State to store message
   let [isLoading, setIsLoading] = useState(false);
+      let [titleMessage,setTitleMessage] = useState("");
   const messagesEndRef = useRef(null);
 let [errorText, setErrorText] = useState("");
 
@@ -46,6 +47,8 @@ let [errorText, setErrorText] = useState("");
       role: "user",
       text: message,
     };
+
+      
     let newAllMessages = [...allMessages, userMessage];
     setAllMessages((prevMessages) => [...prevMessages, userMessage]);
     console.log(allMessages)
@@ -56,7 +59,7 @@ let [errorText, setErrorText] = useState("");
     try {
       // console.log(typeof(allMessages));
       setIsLoading(true);
-      const response = await axios.post(url, { messages: newAllMessages });
+      const response = await axios.post(url, { messages: newAllMessages,title:titleMessage });
       setIsLoading(false);
       // console.log(response.data.data);
       // return;
@@ -65,6 +68,7 @@ let [errorText, setErrorText] = useState("");
         text: response.data.data[0].text,
       };
      
+      setTitleMessage(response.data.title)
 
       setAllMessages((prevMessages) => [...prevMessages, aiMessage]);
 

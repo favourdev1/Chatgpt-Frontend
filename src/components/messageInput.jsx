@@ -48,7 +48,7 @@ console.log(errorText)
 		<div className="flex items-center flex-col justify-between px-1 md:px-4 pt-4 w-full">
 			<div className="w-full xl:w-1/2">
 				<div
-					className={`transition-all px-4  rounded-xl flex items-center border border-chatgpt-border-gray mx-auto py-1 `}
+					className={`transition-all px-4  rounded-full flex items-center border border-chatgpt-border-gray mx-auto py-1 `}
 				>
 					<textarea
 						onChange={(e) => checkIfisTyping(e.target.value)}
@@ -60,7 +60,7 @@ console.log(errorText)
 						onKeyPress={handleKeyPress}
 						// onChange={(event) => setText(event.target.value)}
 						placeholder="Message ChatGPT…"
-						className="m-0 w-full text-base border-0 rounded-2xl resize-none bg-transparent focus:ring-0 focus-visible:ring-0 outline-0 dark:bg-transparent py-[10px] pr-10 md:py-3 md:pr-12 max-h-[25dvh] max-h-52 placeholder-white/50 dark:placeholder-white/50 pl-3 md:pl-4"
+						className="m-0 w-full text-base border-0 rounded-full resize-none bg-transparent focus:ring-0 focus-visible:ring-0 outline-0 dark:bg-transparent py-[10px] pr-10 md:py-3 md:pr-12 max-h-[25dvh] max-h-52 placeholder-white/50 dark:placeholder-white/50 pl-3 md:pl-4"
 						style={{ overflowY: "hidden" }}
 					></textarea>
 					<button
@@ -70,7 +70,7 @@ console.log(errorText)
 							!istyping
 								? "text-chatgpt-dark-gray bg-chatgpt-border-gray"
 								: "bg-white text-chatgpt-dark-gray"
-						} rounded-xl  ${
+						} rounded-full  ${
 							!isLoading ? "scale-1" : "scale-0"
 						}  p-2    duration-200 `}
 					>
