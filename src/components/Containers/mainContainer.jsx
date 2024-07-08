@@ -42,7 +42,7 @@ let [errorText, setErrorText] = useState("");
 
   const sendRequest = async (message) => {
     let url = "https://chatgpt-backend-2qe8.onrender.com/";
-    url = "http://localhost:3001/"
+    // url = "http://localhost:3001/"
     let userMessage = {
       role: "user",
       text: message,
